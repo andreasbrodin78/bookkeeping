@@ -1,0 +1,1 @@
+# Inga externa beroenden krävs för desktop-versionen.
