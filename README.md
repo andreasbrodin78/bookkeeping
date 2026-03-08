@@ -1,20 +1,31 @@
-# Bokföring för mindre föreningar
+# Bokföring för mindre föreningar (.NET + SQLite)
 
-Ett lokalt bokföringsprogram för mindre föreningar byggt i Python (Tkinter) med SQLite.
+Det här är ett lokalt bokföringsprogram för PC byggt med **C#/.NET** och **SQLite**.
+
+## Viktig fix för felet
+Om du har fått:
+
+`SQLite Error 1: 'no such table: Accounts'`
+
+så är det normalt att databasen inte hunnit skapa tabeller ännu. I denna version körs:
+
+- `db.Database.EnsureCreated();`
+
+vid uppstart, vilket automatiskt skapar `Accounts`, `Vouchers` och `Entries` i `bookkeeping.db`.
+
+## Starta
+1. Installera .NET SDK 8.
+2. Kör:
+
+```bash
+dotnet restore
+dotnet run
+```
+
+Programmet körs i terminalen och sparar data lokalt i `bookkeeping.db`.
 
 ## Funktioner
-- Lokal SQLite-fil (`bookkeeping.db`) på datorn.
-- Kontoplan (lägg till konto med kontonummer, namn och typ).
-- Verifikationer med dubbel bokföring (debet/kredit).
-- Översikt med tillgångar, skulder, intäkter och kostnader.
-- Huvudbok per konto.
-
-## Kör lokalt
-```bash
-python app.py
-```
-
-## Test
-```bash
-pytest
-```
+- Lägg till konton.
+- Bokför verifikationer (debet/kredit).
+- Lista konton.
+- Visa enkel huvudbok.
